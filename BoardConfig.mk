@@ -47,8 +47,7 @@ BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_CMDLINE := console=tty60,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 vmalloc=480M
 TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8974
-TARGET_KERNEL_CONFIG := chroma_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+TARGET_KERNEL_CONFIG := radioactive_defconfig
 
 # Enable DIAG on debug builds
 ifneq ($(TARGET_BUILD_VARIANT),user)
@@ -66,6 +65,7 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_CYANOGEN_HARDWARE := true
 
 # Audio
+USE_CUSTOM_AUDIO_POLICY := 1
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
@@ -81,9 +81,11 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zuk/ham/bluetooth
 # Camera
 TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+USE_DEVICE_SPECIFIC_GPS := true
 
 # CM Hardware
 BOARD_HARDWARE_CLASS += device/zuk/ham/cmhw
+TARGET_TAP_TO_WAKE_NODE := /sys/devices/virtual/touch/tp_dev/gesture_on
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 20971520
